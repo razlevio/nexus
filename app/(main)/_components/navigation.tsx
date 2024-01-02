@@ -1,15 +1,21 @@
 "use client";
 
-import { ChevronsLeft, MenuIcon } from "lucide-react";
+import { ChevronsLeft, MenuIcon, PlusCircle, Search } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { cn } from "@/lib/utils";
-import { UserItem } from "./user-item"
+import { UserItem } from "./user-item";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { Item } from "./item";
+import { toast } from "sonner";
 
 export function Navigation() {
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const documents = useQuery(api.documents.get);
+  const create = useMutation(api.documents.create)
 
   const isResizingRef = useRef(false);
   const sidebarRef = useRef<ElementRef<"aside">>(null);
@@ -18,13 +24,13 @@ export function Navigation() {
   const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
   useEffect(() => {
-    if(isMobile) collapse()
-    else resetWidth()
-  }, [isMobile])
+    if (isMobile) collapse();
+    else resetWidth();
+  }, [isMobile]);
 
   useEffect(() => {
-    if (isMobile) collapse()  
-  }, [pathname, isMobile])
+    if (isMobile) collapse();
+  }, [pathname, isMobile]);
 
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -85,6 +91,15 @@ export function Navigation() {
       navbarRef.current.style.setProperty("left", "0");
       setTimeout(() => setIsResetting(false), 300);
     }
+  };
+
+  const handleCreate = () => {
+    const promise = create({title: "Untitled"})
+    toast.promise(promise, {
+      loading: "Creating a new document...",
+      success: "New document created!",
+      error: "Failed to create a new document"
+    })
   }
 
   return (
@@ -109,9 +124,18 @@ export function Navigation() {
         </div>
         <div>
           <UserItem />
+          <Item
+             
+            label="Search"
+            icon={Search}
+            isSearch
+          />
+          <Item onClick={handleCreate} icon={PlusCircle} label="New page" />
         </div>
         <div className="mt-4">
-          <p>Documents</p>
+          {documents?.map((document) => (
+            <p key={document._id}>{document.title}</p>
+          ))}
         </div>
         <div
           onMouseDown={handleMouseDown}
@@ -119,6 +143,7 @@ export function Navigation() {
           className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0"
         />
       </aside>
+
       <div
         ref={navbarRef}
         className={cn(
@@ -129,7 +154,11 @@ export function Navigation() {
       >
         <nav className="bg-transparent px-3 py-2 w-full">
           {isCollapsed && (
-            <MenuIcon onClick={resetWidth} role="button" className="h-6 w-6 text-muted-foreground" />
+            <MenuIcon
+              onClick={resetWidth}
+              role="button"
+              className="h-6 w-6 text-muted-foreground"
+            />
           )}
         </nav>
       </div>
