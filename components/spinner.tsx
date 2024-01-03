@@ -1,4 +1,4 @@
-import { Loader } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -27,6 +27,6 @@ export const Spinner = ({
   size,
 }: SpinnerProps) => {
   return (
-    <Loader className={cn(spinnerVariants({ size }))} />
+    <Loader2 className={cn(spinnerVariants({ size }))} />
   );
 };
