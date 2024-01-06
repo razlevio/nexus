@@ -27,8 +27,11 @@ import {
 } from "@/components/ui/popover";
 
 import { useSearch } from "@/hooks/use-search";
+import { useSettings } from "@/hooks/use-settings";
+
 
 export function Navigation() {
+  const settings = useSettings();
   const search = useSearch();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -142,9 +145,14 @@ export function Navigation() {
         <div>
           <UserItem />
           <Item onClick={search.onOpen} label="Search" icon={Search} isSearch />
-          <Item onClick={() => {}} label="Settings" icon={Settings} />
+          <Item onClick={settings.onOpen} label="Settings" icon={Settings} />
           <Item onClick={handleCreate} label="New page" icon={PlusCircle} />
-          <Popover>
+        </div>
+        <div className="mt-4">
+          <DocumentList />
+          <Item onClick={handleCreate} icon={Plus} label="New page" />
+        </div>
+        <Popover>
             <PopoverTrigger className="w-full mt-4">
               <Item label="Trash" icon={Trash} />
             </PopoverTrigger>
@@ -155,11 +163,6 @@ export function Navigation() {
               <TrashBox />
             </PopoverContent>
           </Popover>
-        </div>
-        <div className="mt-4">
-          <DocumentList />
-          <Item onClick={handleCreate} icon={Plus} label="New page" />
-        </div>
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
