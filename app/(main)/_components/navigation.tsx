@@ -19,7 +19,12 @@ import { api } from "@/convex/_generated/api";
 import { Item } from "./item";
 import { toast } from "sonner";
 import { DocumentList } from "./document-list";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { TrashBox } from "./trash-box";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -140,8 +145,11 @@ export function Navigation() {
             <PopoverTrigger className="w-full mt-4">
               <Item label="Trash" icon={Trash} />
             </PopoverTrigger>
-            <PopoverContent className="w-72 p-0" side={isMobile ? "bottom" : "right"}>
-              <p>Trash Box</p>
+            <PopoverContent
+              className="w-72 p-0"
+              side={isMobile ? "bottom" : "right"}
+            >
+              <TrashBox />
             </PopoverContent>
           </Popover>
         </div>
