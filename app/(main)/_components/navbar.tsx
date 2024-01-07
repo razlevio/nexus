@@ -22,7 +22,7 @@ export function Navbar({ isCollapsed, onResetWidth }: NavbarProps) {
 
   if (document === undefined)
     return (
-      <nav className="bg-background px-3 py-2 w-full flex justify-betweeb items-center">
+      <nav className="bg-background px-3 py-2 w-full flex justify-between items-center">
         <Title.Skeleton />
         <div className="flex items-center gap-x-2">
           <Menu.Skeleton />
