@@ -1,7 +1,15 @@
 import { defineSchema, defineTable } from "convex/server"
 import { v } from "convex/values"
 
+
+/**
+ * Defines the schema for the Convex database.
+ * This schema defines a single table named 'documents' with various fields and indexes.
+ * 
+ * @returns {Object} The schema definition for the Convex database.
+ */
 export default defineSchema({
+    // Define the 'documents' table with its structure and types.
   documents: defineTable({
     title: v.string(),
     userId: v.string(),

@@ -14,31 +14,21 @@ export function Navbar() {
   const scrolled = useScrollTop();
 
   return (
-    <div
-      className={cn(
-        "z-50 bg-background fixed top-0 flex items-center w-full p-6",
-        scrolled && "border-b shadow-sm"
-      )}
-    >
+    <div className={cn("z-50 bg-background fixed top-0 flex items-center w-full p-6 justify-between", scrolled && "border-b shadow-sm")} >
       <Logo />
-      <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
+      <div className="flex items-center gap-x-2">
         {isLoading && <Spinner />}
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
-              <Button variant={"ghost"} size={"sm"}>
-                Login
-              </Button>
-            </SignInButton>
-            <SignInButton mode="modal">
-              <Button size={"sm"}>Get Jotion Free</Button>
+              <Button size={"sm"}>Log in</Button>
             </SignInButton>
           </>
         )}
         {isAuthenticated && !isLoading && (
           <>
-            <Button variant={"ghost"}>
-              <Link href="/documents">Enter Jotion</Link>
+            <Button>
+              <Link href="/documents">Workspace</Link>
             </Button>
             <UserButton afterSignOutUrl="/" />
           </>

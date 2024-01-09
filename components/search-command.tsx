@@ -17,38 +17,47 @@ import {
 import { useSearch } from "@/hooks/use-search";
 import { api } from "@/convex/_generated/api";
 
+/**
+ * The SearchCommand component provides a user interface for searching documents.
+ * It uses a command palette style interface for input and displays results dynamically.
+ */
 export function SearchCommand() {
+  // State and hooks for user, routing, and search functionality.
   const { user } = useUser();
   const router = useRouter();
   const documents = useQuery(api.documents.getSearch);
   const [isMounted, setIsMounted] = useState(false);
-
   const toggle = useSearch((store) => store.toggle);
   const isOpen = useSearch((store) => store.isOpen);
   const onClose = useSearch((store) => store.onClose);
 
+  // Effect to mark the component as mounted after initial render.
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
+  // Effect to listen for keyboard shortcuts to open/close the search command.
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-     if(e.key === "k" && (e.metaKey || e.ctrlKey)) {
-       e.preventDefault();
-       toggle();
-     }
+      if(e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        toggle();
+      }
     }
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, [toggle]);
 
+  // Function to handle selecting a document from the search results.
   const onSelect = (id: string) => {
     router.push(`/documents/${id}`);
     onClose();
   }
 
+  // Render null if the component hasn't mounted yet (to avoid SSR hydration issues).
   if(!isMounted) return null;
 
+  // Main render of the search command interface.
   return (
     <CommandDialog open={isOpen} onOpenChange={onClose}>
       <CommandInput placeholder={`Search ${user?.fullName}'s documents...`} />
