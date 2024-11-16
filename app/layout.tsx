@@ -11,23 +11,58 @@ import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jotion",
+  title: "Nexus",
   description:
     "The connected workspace where better products are built together",
+  authors: [{ name: "Raz Levi", url: "https://razlevio.com" }],
   icons: {
-    icon: [
+    icon: [{ url: "/nexus-blackbg.png" }],
+    shortcut: "/nexus-blackbg.png",
+    apple: "/nexus-blackbg.png",
+  },
+  openGraph: {
+    title: "Nexus",
+    description:
+      "The connected workspace where better products are built together",
+    url: "https://neexus.vercel.app",
+    siteName: "Nexus",
+    locale: "en_US",
+    type: "website",
+    images: [
       {
-        media: "(prefers-color-scheme: dark)",
-        href: "./logo-dark.svg",
-        url: "./logo-dark.svg",
-      },
-      {
-        media: "(prefers-color-scheme: light)",
-        href: "./logo.svg",
-        url: "./logo.svg",
+        url: "/nexus-blackbg.png",
+        width: 1200,
+        height: 630,
+        alt: "Nexus",
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nexus",
+    description:"The connected workspace where better products are built together",
+    site: "@nexus",
+    creator: "@nexus",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "google",
+    yandex: "yandex",
+    yahoo: "yahoo",
+  },
+  manifest: "https://neexus.vercel.app/app.webmanifest",
 };
 
 export default function RootLayout({

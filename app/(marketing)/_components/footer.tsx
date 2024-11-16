@@ -3,7 +3,7 @@ import { Logo } from "./logo";
 
 export function Footer() {
   return (
-    <div className="flex items-center w-full p-6 bg-background z-50">
+    <div className="flex items-center w-full px-6 py-2 z-50 bg-transparent">
       <div className="hidden md:block">
         <Logo />
       </div>

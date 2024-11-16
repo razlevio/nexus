@@ -1,4 +1,0 @@
-# Jotion
-
-## Description
-This project is a clone of the popular organization tool, Notion. It aims to replicate key features while also introducing new functionalities. It serves as a real-time database with a Notion-style editor, offering both light and dark modes. Users can create infinite children documents, manage them through a trash can system with soft delete, and authenticate securely. The application supports file operations (upload, delete, replace) and provides a dynamic, expandable sidebar for easy navigation. Each document can have custom icons, and the entire sidebar is collapsible. For wider accessibility, it is fully mobile responsive. Users can publish their documents to the web, and each document supports a cover image. Additionally, there's a feature for recovering deleted files.

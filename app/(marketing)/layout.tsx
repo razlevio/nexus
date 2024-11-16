@@ -1,12 +1,18 @@
-import { Navbar } from '@/app/(marketing)/_components/navbar'
+import { Navbar } from "@/app/(marketing)/_components/navbar";
+import { Footer } from "@/app/(marketing)/_components/footer";
 
-export default function MarketingLayout({ children } : { children: React.ReactNode }) {
+export default function MarketingLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="h-full">
+    <div className="h-screen flex flex-col">
       <Navbar />
-      <main className="h-full pt-40">
+      <main className="flex-1 flex items-center justify-center overflow-y-auto">
         {children}
       </main>
+      <Footer />
     </div>
-  )
+  );
 }

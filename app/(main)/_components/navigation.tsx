@@ -13,19 +13,16 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 import { ElementRef, useRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { cn } from "@/lib/utils";
-import { UserItem } from "./user-item";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Item } from "./item";
 import { toast } from "sonner";
-import { DocumentList } from "./document-list";
+
+import { Item } from "./item";
+import { UserItem } from "./user-item";
 import { TrashBox } from "./trash-box";
 import { Navbar } from "./navbar";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@/components/ui/popover";
+import { DocumentList } from "./document-list";
+import {  Popover, PopoverTrigger, PopoverContent, } from "@/components/ui/popover";
 
 import { useSearch } from "@/hooks/use-search";
 import { useSettings } from "@/hooks/use-settings";
@@ -128,6 +125,7 @@ export function Navigation() {
 
   return (
     <>
+      {/* Sidebar */}
       <aside
         ref={sidebarRef}
         className={cn(
@@ -173,6 +171,8 @@ export function Navigation() {
           className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0"
         />
       </aside>
+
+      {/* Navbar */}
       <div
         ref={navbarRef}
         className={cn(
