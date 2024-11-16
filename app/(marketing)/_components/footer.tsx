@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Logo } from "./logo";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -8,12 +9,16 @@ export function Footer() {
         <Logo />
       </div>
       <div className="md:ml-auto w-full justify-between md:justify-end flex items-center gap-x-2 text-muted-foreground">
-        <Button variant="ghost" size="sm">
-          Privacy Policy
-        </Button>
-        <Button variant="ghost" size="sm">
-          Terms & Conditions
-        </Button>
+        <Link href="/privacy-policy">
+          <Button variant="ghost" size="sm">
+            Privacy Policy
+          </Button>
+        </Link>
+        <Link href="/terms-of-service">
+          <Button variant="ghost" size="sm">
+            Terms & Conditions
+          </Button>
+        </Link>
       </div>
     </div>
   );

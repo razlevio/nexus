@@ -9,10 +9,10 @@ export default function MarketingLayout({
   return (
     <div className="h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1 flex items-center justify-center overflow-y-auto">
+      <main className="flex-1 flex items-center justify-center">
         {children}
       </main>
       <Footer />
-    </div>
+    </div>  
   );
 }
