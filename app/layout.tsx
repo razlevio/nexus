@@ -40,7 +40,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Nexus",
-    description:"The connected workspace where better products are built together",
+    description:
+      "The connected workspace where better products are built together",
     site: "@nexus",
     creator: "@nexus",
   },
@@ -77,10 +78,10 @@ export default function RootLayout({
           <EdgeStoreProvider>
             <ThemeProvider
               attribute="class"
-              defaultTheme="system"
+              defaultTheme="dark"
               enableSystem
               disableTransitionOnChange
-              storageKey="jotion-theme"
+              storageKey="nexus-theme"
             >
               <Toaster position="bottom-center" />
               <ModalProvider />
