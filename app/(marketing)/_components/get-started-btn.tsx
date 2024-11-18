@@ -13,7 +13,7 @@ export function GetStartedBtn() {
     <>
       {isAuthenticated && !isLoading && (
         <Link href="/documents">
-          <Button size="lg" className="group text-lg h-12 px-8">
+          <Button className="group text-lg h-12 px-8">
             Go to Workspace
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>

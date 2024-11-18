@@ -28,7 +28,7 @@ export default function MarketingPage() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-7xl sm:text-8xl font-bold tracking-tight mb-8">
+          <h1 className="text-5xl sm:text-8xl font-bold tracking-tight mb-8">
             <span className="inline-block bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
               Where ideas
             </span>
@@ -39,7 +39,7 @@ export default function MarketingPage() {
           </h1>
 
           {/* Description */}
-          <p className="text-xl text-muted-foreground mb-12 max-w-xl mx-auto leading-relaxed">
+          <p className="sm:text-xl text-muted-foreground mb-12 max-w-xl mx-auto leading-relaxed">
             Experience the future of collaborative document editing in a
             powerful, seamless platform.
           </p>
@@ -48,7 +48,6 @@ export default function MarketingPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <GetStartedBtn />
             <Button
-              size="lg"
               variant="outline"
               className="group text-lg h-12 px-8 relative overflow-hidden"
             >
